@@ -1,19 +1,27 @@
 import { Controller, Get, Post, Delete } from '@nestjs/common';
+import { VocabularyService } from './vocabulary.service';
+import { Vocabulary } from './vocabulary.entity';
 
 @Controller('vocabulary')
 export class VocabularyController {
 
-@Get()
-getAllVocabulary() {}
+    constructor(
+        private readonly vocabularyService: VocabularyService
+    ) {}
 
-@Get()
-getOneVocabularyWord() {}
+    @Get()
+    getAllVocabulary() {
+        return this.vocabularyService.getAllVocabulary();
+    }
 
-@Get()
-getRandomVocabularyWord() {}
+    @Get(':id')
+    getOneVocabularyWord() {}
 
-@Post()
-addWords() {}
+    @Get('random')
+    getRandomVocabularyWord() {}
+
+    @Post()
+    addWords() {}
 
 
 
