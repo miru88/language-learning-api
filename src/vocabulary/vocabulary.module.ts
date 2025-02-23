@@ -2,7 +2,7 @@ import { Global, Module } from '@nestjs/common';
 import { VocabularyController } from './vocabulary.controller';
 import { VocabularyService } from './vocabulary.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Vocabulary } from './vocabulary.entity';
+import { Vocabulary } from './entities/vocabulary.entity';
 
 @Global()
 @Module({

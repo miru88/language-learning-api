@@ -5,6 +5,7 @@ import { VocabularyModule } from './vocabulary/vocabulary.module';
 import { StoryModule } from './story/story.module';
 import { VocabularyStatisticsModule } from './vocabulary_statistics/vocabulary_statistics.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { CharacterModule } from './character/character.module';
 
 
 @Module({
@@ -21,7 +22,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       database: 'chinese',
       autoLoadEntities: true,
       synchronize: true
-    })],
+    }),
+    CharacterModule],
   controllers: [AppController],
   providers: [AppService],
 })

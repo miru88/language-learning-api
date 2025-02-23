@@ -1,8 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Vocabulary } from './vocabulary.entity';
-import { CreateVocabularyDto } from './vocabulary.dto';
+import { Vocabulary } from './entities/vocabulary.entity';
+import { CreateVocabularyDto, UpdateVocabularyDto } from './dto/vocabulary.dto';
+import { workerData } from 'worker_threads';
 
 @Injectable()
 export class VocabularyService {
@@ -45,5 +46,17 @@ export class VocabularyService {
         createdWord.band = 'CUSTOM';
 
         await this.vocabularyRepository.save(createdWord);
+    }
+
+    async updateWord(updateWordObject: UpdateVocabularyDto): Promise<void> {
+        
+        //word columns are not allowed to be null or empty
+
+        const entityData: Partial<Vocabulary> = await this.vocabularyRepository.findOneBy({id:updateWordObject.id});
+
+        if (!entityData) return null;
+
+        await this.vocabularyRepository.save(entityData);
+
     }
 }
