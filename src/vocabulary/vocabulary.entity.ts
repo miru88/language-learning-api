@@ -23,3 +23,4 @@ export class Vocabulary {//DEFINE relations and the JOIN columns for this
     @CreateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
     createdDate: Date;
 }
+still need to make relationships and specify join columns
